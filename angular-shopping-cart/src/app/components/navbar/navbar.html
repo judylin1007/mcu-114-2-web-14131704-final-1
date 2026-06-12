@@ -1,1 +1,17 @@
-<p>navbar works!</p>
+<header class="site-header">
+  <div class="header-container">
+    <h1 class="site-title" routerLink="/">電子商城</h1>
+
+    <nav class="site-nav">
+      <a routerLink="/products" routerLinkActive="active" class="nav-link">
+        <i class="icon">📖</i> 產品清單
+      </a>
+      <a routerLink="/cart" routerLinkActive="active" class="nav-link cart-link">
+        <i class="icon">🛒</i> 購物車
+        @if (totalCount() > 0) {
+          <span class="cart-badge">{{ totalCount() }}</span>
+        }
+      </a>
+    </nav>
+  </div>
+</header>
