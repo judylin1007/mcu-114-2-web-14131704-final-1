@@ -11,15 +11,15 @@
         <table class="meta-table">
           <tr>
             <td class="label">作者</td>
-            <td>{{ product.author }}</td>
+            <td class="value">{{ product.author }}</td>
           </tr>
           <tr>
             <td class="label">公司</td>
-            <td>{{ product.publisher }}</td>
+            <td class="value">{{ product.publisher }}</td>
           </tr>
           <tr>
             <td class="label">價格</td>
-            <td>
+            <td class="value">
               <span class="price-val">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</span>
               @if (product.originPrice && product.originPrice > product.price) {
                 <span class="badge-discount">特價</span>

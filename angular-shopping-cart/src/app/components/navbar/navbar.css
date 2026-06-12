@@ -1,7 +1,15 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
 .site-header {
-  background-color: #dbeafe; 
-  color: #1e3a8a;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background-color: #dbeafe;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
 }
 
 .header-container {
@@ -10,12 +18,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 14px 24px;
 }
 
 .site-title {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: bold;
   color: #1e3a8a;
   cursor: pointer;
@@ -23,29 +31,31 @@
 
 .site-nav {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   align-items: center;
 }
 
 .nav-link {
-  color: #4b5563;
+  color: #1e3a8a;
   text-decoration: none;
   font-size: 0.95rem;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
+  border: none;
+  background: transparent;
   transition: all 0.2s;
 }
 
 .nav-link.active {
-  background-color: #bfdbfe; 
+  background-color: #bfdbfe;
   color: #1e3a8a;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .cart-link {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .cart-badge {
