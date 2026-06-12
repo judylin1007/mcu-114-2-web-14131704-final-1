@@ -1,297 +1,111 @@
 .cart-page-container {
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .cart-main-layout {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   align-items: flex-start;
-  margin-bottom: 30px;
-}
-
-@media (max-width: 992px) {
-  .cart-main-layout {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .basic-info-section, .cart-items-section {
-    width: 100% !important;
-    flex: none !important;
-  }
 }
 
 .basic-info-section {
   flex: 3;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d4d4d8;
+  background: white;
 }
 
 .cart-items-section {
   flex: 7;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #d4d4d8;
+  background: white;
 }
 
-.section-title {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 1.25rem;
-  color: #1e293b;
-  border-bottom: 2px solid #f1f5f9;
-  padding-bottom: 10px;
-}
-
-.styled-form .form-group {
-  margin-bottom: 18px;
-}
-
-.styled-form label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #475569;
-  font-size: 0.95rem;
-}
-
-.required {
-  color: #ef4444;
-}
-
-.form-control {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s;
-}
-
-.form-control:focus {
-  border-color: #38bdf8;
-}
-
-.error-msg {
-  color: #ef4444;
-  font-size: 0.8rem;
-  display: block;
-  margin-top: 4px;
-}
-
-.items-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.cart-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  border: 1px solid #f1f5f9;
-  padding: 15px;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.item-img {
-  width: 60px;
-  height: 80px;
-  object-fit: contain;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
-}
-
-.item-details {
-  flex-grow: 1;
-}
-
-.item-name {
-  margin: 0 0 4px 0;
-  font-size: 1.05rem;
-  color: #1e293b;
-}
-
-.item-meta {
-  margin: 0 0 4px 0;
-  font-size: 0.85rem;
-  color: #64748b;
-}
-
-.item-price {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #475569;
-  font-weight: 500;
-}
-
-.item-qty-control {
-  display: flex;
-  align-items: center;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  background: #fff;
-}
-
-.qty-btn {
-  border: none;
-  background: none;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.qty-btn:hover {
-  background: #f1f5f9;
-}
-
-.qty-num {
-  width: 35px;
+.section-header {
   text-align: center;
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #f4f4f5;
+  border-bottom: 1px solid #d4d4d8;
+  color: #000;
 }
 
-.item-subtotal {
+.grid-form {
+  padding: 15px;
+}
+
+.form-row {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-width: 90px;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.subtotal-label {
-  font-size: 0.75rem;
-  color: #94a3b8;
+.form-row label {
+  width: 60px;
+  font-weight: bold;
+  color: #000;
 }
 
-.subtotal-amount {
-  font-weight: 700;
-  color: #0f172a;
+.input-cell {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.btn-delete {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  padding: 5px;
+.input-cell input {
+  flex-grow: 1;
+  padding: 4px 8px;
+  border: 1px solid #a1a1aa;
   border-radius: 4px;
-  transition: background-color 0.2s;
 }
 
-.btn-delete:hover {
-  background-color: #fee2e2;
-}
-
-/* 總金額計算盒 */
-.cart-summary-box {
-  margin-top: 20px;
-  text-align: right;
-  border-top: 2px dashed #e2e8f0;
-  padding-top: 15px;
-}
-
-.total-label {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-.total-amount {
-  font-size: 1.6rem;
-  font-weight: 800;
+.err-hint {
   color: #ef4444;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.table-container {
+  padding: 15px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.cell-index { width: 40px; text-align: center; font-weight: bold; }
+.cell-name { flex-grow: 1; font-weight: bold; }
+.cell-qty input { width: 60px; text-align: center; padding: 4px; border: 1px solid #a1a1aa; }
+.cell-subtotal { width: 120px; text-align: right; font-weight: bold; padding-right: 15px; }
+
+.btn-del-text {
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  background: white;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
 }
 
 .standalone-action-row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-  padding: 20px 0;
-  border-top: 1px solid #e2e8f0;
+  justify-content: center;
+  margin-top: 30px;
 }
 
-.btn-submit-order {
-  width: 100%;
-  max-width: 400px;
-  background-color: #10b981; 
-  color: white;
-  border: none;
-  padding: 14px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
-  transition: all 0.2s ease;
-}
-
-.btn-submit-order:hover:not(.btn-disabled) {
-  background-color: #059669;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px -2px rgba(16, 185, 129, 0.4);
-}
-
-.btn-submit-order.btn-disabled {
-  background-color: #cbd5e1;
-  color: #94a3b8;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-}
-
-.hint-msg {
-  margin-top: 8px;
-  color: #64748b;
-  font-size: 0.85rem;
-}
-
-/* 空購物車樣式 */
-.empty-cart-view {
-  text-align: center;
-  padding: 60px 20px;
+.btn-checkout-box {
+  border: 1px solid #a1a1aa;
   background: white;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-}
-
-.empty-icon {
-  font-size: 4rem;
-  margin-bottom: 15px;
-}
-
-.empty-cart-view h2 {
-  color: #334155;
-  margin-bottom: 8px;
-}
-
-.empty-cart-view p {
-  color: #64748b;
-  margin-bottom: 24px;
-}
-
-.btn-go-shopping {
-  background-color: #0284c7;
-  color: white;
-  border: none;
-  padding: 12px 28px;
+  color: #52525b;
+  padding: 8px 16px;
   font-size: 1rem;
-  font-weight: 600;
-  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
-.btn-go-shopping:hover {
-  background-color: #0369a1;
+.btn-checkout-box:disabled {
+  color: #a1a1aa;
+  cursor: not-allowed;
 }

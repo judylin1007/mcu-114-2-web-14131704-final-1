@@ -3,61 +3,45 @@
     <input 
       type="text" 
       [(ngModel)]="searchQuery" 
-      (ngModelChange)="onSearchChange()"
-      placeholder="🔍 輸入書名或作者進行查詢..." 
+      placeholder="產品名稱查詢" 
       class="search-input"
     />
+    <button class="btn-search">查詢</button>
   </div>
 
   <div class="products-grid">
     @for (product of pagedProducts(); track product.id) {
       <div class="product-card">
         <div class="card-image">
-          <img [src]="product.imageUrl" [alt]="product.name">
+          <span class="img-placeholder">img</span>
         </div>
         <div class="card-content">
           @if (product.originPrice && product.originPrice > product.price) {
-            <h3 class="product-title discount-title">{{ product.name }} (特價中)</h3>
+            <h3 class="product-title discount-title">{{ product.name }}</h3>
           } @else {
             <h3 class="product-title">{{ product.name }}</h3>
           }
           
-          <p class="product-info">作者：{{ product.author }}</p>
-          <p class="product-info">出版社：{{ product.publisher }}</p>
+          <p class="product-info">{{ product.author }}</p>
+          <p class="product-info">{{ product.publisher }}</p>
           
           <div class="price-section">
-            @if (product.originPrice) {
-              <span class="origin-price">NT$ {{ product.originPrice }}</span>
-            }
-            <span class="current-price">NT$ {{ product.price }}</span>
+            <span class="current-price">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</span>
           </div>
         </div>
         
         <div class="card-actions">
-          <button [routerLink]="['/product', product.id]" class="btn-view">👀 檢視明細</button>
-          <button (click)="addToCart(product)" class="btn-add">🛒 加入購物車</button>
+          <button [routerLink]="['/product', product.id]" class="btn-view">明細</button>
+          <button (click)="addToCart(product)" class="btn-add">加入購物車</button>
         </div>
       </div>
-    } @empty {
-      <div class="no-products">找不到符合條件的書籍商品</div>
     }
   </div>
 
   @if (totalPages() > 1) {
     <div class="pagination">
-      <button 
-        (click)="setPage(currentPage() - 1)" 
-        [disabled]="currentPage() === 1"
-        class="page-btn"
-      >上一頁</button>
-      
-      <span class="page-info">第 {{ currentPage() }} / {{ totalPages() }} 頁</span>
-      
-      <button 
-        (click)="setPage(currentPage() + 1)" 
-        [disabled]="currentPage() === totalPages()"
-        class="page-btn"
-      >下一頁</button>
+      <button (click)="setPage(1)" [class.active]="currentPage() === 1" class="page-num-btn">1</button>
+      <button (click)="setPage(2)" [class.active]="currentPage() === 2" class="page-num-btn">2</button>
     </div>
   }
 </div>
