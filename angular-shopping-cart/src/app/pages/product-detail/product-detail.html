@@ -1,1 +1,50 @@
-<p>product-detail works!</p>
+@if (product) {
+  <div class="detail-container">
+    <div class="back-action">
+      <a routerLink="/products" class="btn-back">⬅ 返回產品清單</a>
+    </div>
+
+    <div class="detail-layout">
+      <div class="detail-image-box">
+        <img [src]="product.imageUrl" [alt]="product.name">
+      </div>
+
+      <div class="detail-info-box">
+        @if (product.originPrice && product.originPrice > product.price) {
+          <h2 class="detail-title text-danger">{{ product.name }} [限時特惠中]</h2>
+        } @else {
+          <h2 class="detail-title">{{ product.name }}</h2>
+        }
+
+        <div class="book-meta">
+          <p><strong>作者：</strong>{{ product.author }}</p>
+          <p><strong>出版社：</strong>{{ product.publisher }}</p>
+        </div>
+
+        <div class="detail-description">
+          <h3>📖 內容簡介</h3>
+          <p>{{ product.description }}</p>
+        </div>
+
+        <div class="detail-price-section">
+          @if (product.originPrice) {
+            <span class="old-price">原價：NT$ {{ product.originPrice }}</span>
+          }
+          <span class="new-price">特價：NT$ {{ product.price }}</span>
+        </div>
+
+        <div class="purchase-section">
+          <div class="quantity-counter">
+            <button (click)="decrementQty()" class="qty-btn" [disabled]="quantity() <= 1">-</button>
+            <input type="number" [(ngModel)]="quantity" readonly class="qty-input">
+            <button (click)="incrementQty()" class="qty-btn">+</button>
+          </div>
+          
+          <button (click)="onAddToCart()" class="btn-submit-cart">
+            🛒 購買 {{ quantity() }} 本，加入購物車
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
