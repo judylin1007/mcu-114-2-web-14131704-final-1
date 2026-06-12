@@ -1,1 +1,96 @@
-<p>cart works!</p>
+<div class="cart-page-container">
+  
+  @if (cartItems().length > 0) {
+    <div class="cart-main-layout">
+      
+      <div class="basic-info-section">
+        <h3 class="section-title">👤 訂購人基本資料</h3>
+        <form [formGroup]="checkoutForm" class="styled-form">
+          
+          <div class="form-group">
+            <label for="name">姓名 <span class="required">*</span></label>
+            <input type="text" id="name" formControlName="name" placeholder="請輸入真實姓名" class="form-control">
+            @if (checkoutForm.get('name')?.touched && checkoutForm.get('name')?.invalid) {
+              <small class="error-msg">請填寫姓名（至少 2 個字）</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="phone">聯絡電話 <span class="required">*</span></label>
+            <input type="text" id="phone" formControlName="phone" placeholder="例如: 0912345678" class="form-control">
+            @if (checkoutForm.get('phone')?.touched && checkoutForm.get('phone')?.invalid) {
+              <small class="error-msg">請填寫正確的手機號碼 (09開頭共10碼)</small>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="address">寄送地址 <span class="required">*</span></label>
+            <input type="text" id="address" formControlName="address" placeholder="請輸入完整寄送地址" class="form-control">
+            @if (checkoutForm.get('address')?.touched && checkoutForm.get('address')?.invalid) {
+              <small class="error-msg">寄送地址為必填欄位</small>
+            }
+          </div>
+
+        </form>
+      </div>
+
+      <div class="cart-items-section">
+        <h3 class="section-title">🛒 購物車品項明細</h3>
+        <div class="items-list">
+          @for (item of cartItems(); track item.product.id) {
+            <div class="cart-card">
+              <img [src]="item.product.imageUrl" class="item-img" alt="book">
+              <div class="item-details">
+                <h4 class="item-name">{{ item.product.name }}</h4>
+                <p class="item-meta">作者：{{ item.product.author }} | 出版：{{ item.product.publisher }}</p>
+                <p class="item-price">單價：NT$ {{ item.product.price }}</p>
+              </div>
+              
+              <div class="item-qty-control">
+                <button (click)="onDecrement(item.product.id, item.quantity)" class="qty-btn">-</button>
+                <span class="qty-num">{{ item.quantity }}</span>
+                <button (click)="onIncrement(item.product.id, item.quantity)" class="qty-btn">+</button>
+              </div>
+
+              <div class="item-subtotal">
+                <span class="subtotal-label">小計</span>
+                <span class="subtotal-amount">NT$ {{ item.product.price * item.quantity }}</span>
+              </div>
+
+              <button (click)="onRemove(item.product.id)" class="btn-delete" title="刪除項目">🗑️</button>
+            </div>
+          }
+        </div>
+
+        <div class="cart-summary-box">
+          <span class="total-label">總計結帳金額：</span>
+          <span class="total-amount">NT$ {{ totalPrice() }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="standalone-action-row">
+      <button 
+        (click)="onSubmit()" 
+        [disabled]="isSubmitDisabled" 
+        [class.btn-disabled]="isSubmitDisabled"
+        class="btn-submit-order"
+      >
+        🚀 確認資料無誤，送出訂單
+      </button>
+      @if (checkoutForm.invalid) {
+        <p class="hint-msg">💡 請填妥左側「基本資料」必填欄位後，即可送出訂單。</p>
+      }
+    </div>
+
+  } @else {
+    <div class="empty-cart-view">
+      <div class="empty-icon">🛒</div>
+      <h2>您的購物車目前沒有任何商品</h2>
+      <p>挑選幾本博碩文化的好書來充實自己吧！</p>
+      <button routerLink="/products" class="btn-go-shopping"> 前往選購書籍</button>
+    </div>
+  }
+
+</div>
