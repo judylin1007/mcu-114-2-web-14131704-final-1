@@ -21,7 +21,7 @@
             <td class="label">價格</td>
             <td>
               <span class="price-val">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</span>
-              @if (product.originPrice) {
+              @if (product.originPrice && product.originPrice > product.price) {
                 <span class="badge-discount">特價</span>
               }
             </td>
