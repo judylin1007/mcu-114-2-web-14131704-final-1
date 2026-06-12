@@ -2,7 +2,7 @@ import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../services/cart'; 
+import { CartService } from '../../services/cart';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -10,25 +10,23 @@ import { Product } from '../../models/product.model';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './product-list.html',
-  styleUrl: './product-list.css'
+  styleUrl: './product-list.css',
 })
 export class ProductListComponent {
   private cartService = inject(CartService);
 
   searchQuery = signal<string>('');
   currentPage = signal<number>(1);
-  pageSize = 2;
+
+  pageSize = 5;
 
   allProducts = this.cartService.getProducts();
 
   filteredProducts = computed(() => {
     const query = this.searchQuery().trim().toLowerCase();
-    if (!query) {
-      return this.allProducts;
-    }
-    return this.allProducts.filter((p: Product) =>  
-      p.name.toLowerCase().includes(query) || 
-      p.author.toLowerCase().includes(query)
+    if (!query) return this.allProducts;
+    return this.allProducts.filter(
+      (p) => p.name.toLowerCase().includes(query) || p.author.toLowerCase().includes(query),
     );
   });
 
@@ -53,6 +51,5 @@ export class ProductListComponent {
 
   addToCart(product: Product) {
     this.cartService.addToCart(product, 1);
-    alert(`已將「${product.name}」加入購物車！`);
   }
 }

@@ -34,13 +34,15 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); 
+  grid-template-columns: repeat(5, 1fr);
   gap: 15px;
   margin-bottom: 25px;
 }
 
 @media (max-width: 1200px) {
-  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .product-card {
@@ -81,7 +83,7 @@
 }
 
 .product-title.discount-title {
-  color: #ef4444; 
+  color: #ef4444;
 }
 
 .product-info {
@@ -128,7 +130,9 @@
   cursor: pointer;
 }
 
-.btn-add:hover { background-color: #2563eb; }
+.btn-add:hover {
+  background-color: #2563eb;
+}
 
 .pagination {
   display: flex;
