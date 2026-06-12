@@ -2,7 +2,7 @@ import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../services/cart.ts';
+import { CartService } from '../../services/cart'; 
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -16,7 +16,6 @@ export class ProductListComponent {
   private cartService = inject(CartService);
 
   searchQuery = signal<string>('');
-  
   currentPage = signal<number>(1);
   pageSize = 2;
 
@@ -27,7 +26,7 @@ export class ProductListComponent {
     if (!query) {
       return this.allProducts;
     }
-    return this.allProducts.filter(p => 
+    return this.allProducts.filter((p: Product) =>  
       p.name.toLowerCase().includes(query) || 
       p.author.toLowerCase().includes(query)
     );

@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CartService } from '../../services/cart.ts';
+import { CartService } from '../../services/cart'; 
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -18,7 +18,6 @@ export class ProductDetailComponent implements OnInit {
   private cartService = inject(CartService);
 
   product: Product | undefined;
-  
   quantity = signal<number>(1);
 
   ngOnInit() {

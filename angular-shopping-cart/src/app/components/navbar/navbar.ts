@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CartService } from '../../services/cart.ts';
-
+import { CartService } from '../../services/cart'; 
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -11,6 +10,5 @@ import { CartService } from '../../services/cart.ts';
 })
 export class NavbarComponent {
   private cartService = inject(CartService);
-
   totalCount = this.cartService.totalItemsCount;
 }
