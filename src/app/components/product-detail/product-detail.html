@@ -1,0 +1,38 @@
+@if (isLoading()) {
+  <div class="loading">商品資料載入中...</div>
+} @else if (product()) {
+  <div class="detail-container">
+    <div class="img-placeholder-box-large">img</div>
+
+    <div class="info-card">
+      <h2>{{ product()?.name }}</h2>
+
+      <div class="info-table">
+        <div class="info-row">
+          <span class="label">作者</span>
+          <span class="value">{{ product()?.author }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">公司</span>
+          <span class="value">{{ product()?.company }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">價格</span>
+          <span class="value price-row">
+            <span class="price">${{ product()?.price | number: '1.2-2' }}</span>
+            @if (product()?.isDiscount) {
+              <span class="discount-tag">特價</span>
+            }
+          </span>
+        </div>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn-back" routerLink="/products">返回</button>
+        <button class="btn-add" (click)="addToCart()">加入購物車</button>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="error-msg">找不到該商品的詳細資料。</div>
+}

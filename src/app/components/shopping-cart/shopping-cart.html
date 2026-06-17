@@ -1,0 +1,73 @@
+<div class="cart-layout">
+  <div class="section-box profile-box">
+    <div class="box-header">基本資料</div>
+    <div class="box-body">
+      <form [formGroup]="orderForm">
+        <div class="form-group">
+          <label>姓名</label>
+          <div class="input-wrapper">
+            <input type="text" formControlName="name" />
+            @if (isFieldInvalid('name')) {
+              <span class="error-text">請輸入姓名</span>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>地址</label>
+          <div class="input-wrapper">
+            <input type="text" formControlName="address" />
+            @if (isFieldInvalid('address')) {
+              <span class="error-text">請輸入地址</span>
+            }
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>電話</label>
+          <div class="input-wrapper">
+            <input type="text" formControlName="phone" />
+            @if (isFieldInvalid('phone')) {
+              <span class="error-text">請輸入電話</span>
+            }
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="section-box items-box">
+    <div class="box-header">購買項目</div>
+    <div class="box-body">
+      @for (item of cartService.cartItems(); track item.product.id; let i = $index) {
+        <div class="cart-item">
+          <span class="item-index">{{ i + 1 }}</span>
+          <span class="item-name">{{ item.product.name }}</span>
+
+          <div class="item-quantity">
+            <input
+              type="number"
+              [value]="item.quantity"
+              min="1"
+              (input)="onQuantityChange(item.product.id, $event)"
+            />
+          </div>
+
+          <span class="item-subtotal">
+            ${{ item.product.price * item.quantity | number: '1.2-2' }}
+          </span>
+
+          <button class="btn-delete" (click)="removeItem(item.product.id)">刪除</button>
+        </div>
+      } @empty {
+        <div class="empty-cart">購物車內目前沒有商品</div>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="submit-section">
+  <button type="button" class="btn-submit" [disabled]="!canSubmit" (click)="onSubmit()">
+    送出訂單 (${{ cartService.totalPrice() | number: '1.2-2' }})
+  </button>
+</div>

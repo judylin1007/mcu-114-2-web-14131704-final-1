@@ -1,0 +1,41 @@
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    placeholder="產品名稱查詢"
+    (keyup.enter)="onSearch()"
+  />
+  <button (click)="onSearch()">查詢</button>
+</div>
+
+<div class="product-grid">
+  @for (product of paginatedProducts(); track product.id) {
+    <div class="product-card">
+      <div class="img-placeholder-box">img</div>
+
+      <div class="product-info">
+        <h3 [class.discount-title]="product.isDiscount">{{ product.name }}</h3>
+        <p class="author">{{ product.author }}</p>
+        <p class="company">{{ product.company }}</p>
+
+        <div class="card-footer">
+          <span class="price">${{ product.price | number: '1.2-2' }}</span>
+          <div class="actions">
+            <button class="btn-detail" [routerLink]="['/product', product.id]">明細</button>
+            <button class="btn-add" (click)="addToCart(product)">加入購物車</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @empty {
+    <div class="no-data">查無符合條件的商品</div>
+  }
+</div>
+
+<div class="pagination">
+  @for (page of pageNumbers; track page) {
+    <button [class.active]="currentPage() === page" (click)="changePage(page)">
+      {{ page }}
+    </button>
+  }
+</div>

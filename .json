@@ -1,0 +1,65 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "A 產品",
+      "author": "作者 A、作者 B、作者 C",
+      "company": "博碩文化",
+      "price": 1580,
+      "isDiscount": true,
+      "hidden": false,
+      "imageUrl": "assets/images/product.png"
+    },
+    {
+      "id": "2",
+      "name": "B 產品",
+      "author": "作者 A、作者 B、作者 C",
+      "company": "博碩文化",
+      "price": 1580,
+      "isDiscount": false,
+      "hidden": false,
+      "imageUrl": "assets/images/product.png"
+    },
+    {
+      "id": "3",
+      "name": "C 產品",
+      "author": "作者 A、作者 B、作者 C",
+      "company": "博碩文化",
+      "price": 1580,
+      "isDiscount": false,
+      "hidden": false,
+      "imageUrl": "assets/images/product.png"
+    },
+    {
+      "id": "4",
+      "name": "D 產品",
+      "author": "作者 A、作者 B、作者 C",
+      "company": "博碩文化",
+      "price": 1580,
+      "isDiscount": false,
+      "hidden": false,
+      "imageUrl": "assets/images/product.png"
+    },
+    {
+      "id": "5",
+      "name": "E 產品",
+      "author": "作者 A、作者 B、作者 C",
+      "company": "博碩文化",
+      "price": 1580,
+      "isDiscount": false,
+      "hidden": false,
+      "imageUrl": "assets/images/product.png"
+    },
+    {
+      "id": "6",
+      "name": "隱藏產品 X",
+      "author": "神秘作者",
+      "company": "測試公司",
+      "price": 999,
+      "isDiscount": false,
+      "hidden": true,
+      "imageUrl": "assets/images/product.png"
+    }
+  ],
+  "orders": []
+}

@@ -1,0 +1,16 @@
+<header class="navbar">
+  <div class="logo" routerLink="/products">電子商城</div>
+  <nav class="nav-links">
+    <a routerLink="/products" routerLinkActive="active" class="nav-btn">產品清單</a>
+    <a routerLink="/cart" routerLinkActive="active" class="nav-btn cart-btn">
+      購物車
+      @if (cartService.totalCount() > 0) {
+        <span class="badge">{{ cartService.totalCount() }}</span>
+      }
+    </a>
+  </nav>
+</header>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
